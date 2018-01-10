@@ -1,0 +1,87 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.chenwang.demo</groupId>
+  <artifactId>demoSpringBoot</artifactId>
+  <packaging>war</packaging>
+  <version>1.0-SNAPSHOT</version>
+  <name>demoSpringBoot Maven Webapp</name>
+  <url>http://maven.apache.org</url>
+
+  <properties>
+    <!--项目源码中的java源文件统一编码-->
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <!-- jdk版本号，这里需要你本地进行的jdk进行修改,这里使用的是1.7的版本. -->
+    <java.version>1.8</java.version>
+  </properties>
+  <!-- Maven POM文件继承 spring-boot-starter-parent -->
+  <!--
+      spring boot 父节点依赖,
+      引入这个之后相关的引入就不需要添加version配置，
+      spring boot会自动选择最合适的版本进行添加。
+    -->
+  <parent>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-parent</artifactId>
+    <version>1.4.2.RELEASE</version>
+  </parent>
+
+  <!--dependencies添加依赖-->
+  <dependencies>
+    <!-- 为一个web应用程序添加典型的依赖关系, Starter POMs依赖 -->
+    <!-- spring boot web支持：mvc,aop...
+        这个是最基本的，基本每一个基本的demo都是需要引入的。
+    -->
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-web</artifactId>
+    </dependency>
+
+    <!-- spring jpa
+       spring jpa中带有自带的tomcat数据连接池;
+       在代码中我们也需要用到.
+     -->
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-data-jpa</artifactId>
+    </dependency>
+
+    <!--Spring Boot为我们准备了最佳的数据库连接池方案，只需要在属性文件（例如application.properties）中配置需要的连接池参数即可。
+    我们使用Tomcat数据源连接池，需要依赖tomcat-jdbc，只要应用中添加了spring-boot-starter-jdbc 或 spring-boot-starter-data-jpa依赖，
+    则无需担心这点，因为将会自动添加 tomcat-jdbc 依赖-->
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-jdbc</artifactId>
+    </dependency>
+
+    <!--oracle数据库支持jar包-->
+    <dependency>
+      <groupId>com.oracle</groupId>
+      <artifactId>ojdbc6</artifactId>
+      <version>11.2.0.3</version>
+    </dependency>
+
+    <!--mysql数据库支持jar包-->
+    <dependency>
+      <groupId>mysql</groupId>
+      <artifactId>mysql-connector-java</artifactId>
+      <version>5.1.21</version>
+    </dependency>
+
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>3.8.1</version>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+  <build>
+    <finalName>demoSpringBoot</finalName>
+    <plugins>
+      <plugin>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-maven-plugin</artifactId>
+      </plugin>
+    </plugins>
+  </build>
+</project>
